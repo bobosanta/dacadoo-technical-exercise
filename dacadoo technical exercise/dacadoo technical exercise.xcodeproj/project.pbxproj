@@ -20,6 +20,8 @@
 		0C9E79B22BDFCDD900762566 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79B12BDFCDD900762566 /* ImageCell.swift */; };
 		0C9E79B52BDFCE0400762566 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9E79B42BDFCE0400762566 /* ImageCell.xib */; };
 		0C9E79B82BDFCF5600762566 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79B72BDFCF5600762566 /* UITableViewCell+Extension.swift */; };
+		0C9E79BA2BDFD68300762566 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79B92BDFD68300762566 /* DetailsViewController.swift */; };
+		0C9E79BC2BDFD76300762566 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		0C9E79B12BDFCDD900762566 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		0C9E79B42BDFCE0400762566 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		0C9E79B72BDFCF5600762566 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		0C9E79B92BDFD68300762566 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		0C9E79A82BDF98C100762566 /* DetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0C9E79B92BDFD68300762566 /* DetailsViewController.swift */,
+				0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */,
 			);
 			path = DetailsViewController;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			files = (
 				0C9E799C2BDF975D00762566 /* LaunchScreen.storyboard in Resources */,
 				0C9E79B52BDFCE0400762566 /* ImageCell.xib in Resources */,
+				0C9E79BC2BDFD76300762566 /* DetailsViewController.xib in Resources */,
 				0C9E79992BDF975D00762566 /* Assets.xcassets in Resources */,
 				0C9E79972BDF975800762566 /* Main.storyboard in Resources */,
 			);
@@ -233,6 +240,7 @@
 				0C9E79B22BDFCDD900762566 /* ImageCell.swift in Sources */,
 				0C9E79922BDF975800762566 /* SceneDelegate.swift in Sources */,
 				0C9E79AF2BDFA23700762566 /* UnsplashPhoto.swift in Sources */,
+				0C9E79BA2BDFD68300762566 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

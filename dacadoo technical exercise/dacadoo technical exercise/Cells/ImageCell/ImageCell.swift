@@ -11,7 +11,6 @@ class ImageCell: UITableViewCell {
     
     @IBOutlet weak var cellImageView: UIImageView!
     
-    
     func configure(image: UIImage) {
         cellImageView.image = image
     }
