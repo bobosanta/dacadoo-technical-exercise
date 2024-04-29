@@ -13,6 +13,10 @@ private enum SearchViewControllerConstants {
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    var images: [UIImage] = []
+    
     let searchController = UISearchController()
     
     private let viewModel = SearchViewControllerViewModel(apiService: APIService())
@@ -31,14 +35,24 @@ class SearchViewController: UIViewController {
         
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        registerCell()
+    }
+    
+    private func registerCell() {
+        ImageCell.registerByClassName(tableView: tableView)
     }
     
     private func fetchImages(for query: String) {
         Task {
             do {
                 let images = try await viewModel.fetchImages(query: query)
-
-                print(images)
+                self.images = images
+                
+                tableView.reloadData()
             } catch {
                 print(error.localizedDescription)
             }
@@ -57,3 +71,19 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - UITableViewDelegate and Datasource Extension
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ImageCell.cellReuseIdentifier(), for: indexPath) as? ImageCell else {
+            return UITableViewCell()
+        }
+        
+        cell.configure(image: images[indexPath.row])
+        
+        return cell
+    }
+}

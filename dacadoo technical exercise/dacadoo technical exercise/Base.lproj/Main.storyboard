@@ -15,14 +15,29 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OvH-2H-lEb">
+                                <rect key="frame" x="0.0" y="155" width="393" height="663"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OvH-2H-lEb" secondAttribute="bottom" id="3F6-3R-C0k"/>
+                            <constraint firstItem="OvH-2H-lEb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5VG-Ie-v3h"/>
+                            <constraint firstItem="OvH-2H-lEb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EB8-Iw-TMu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OvH-2H-lEb" secondAttribute="trailing" id="FQL-hP-iX8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8Ka-fN-WMO"/>
+                    <connections>
+                        <outlet property="tableView" destination="OvH-2H-lEb" id="jq3-Aj-tC2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1055.7251908396945" y="-27.464788732394368"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9af-tx-FD3">

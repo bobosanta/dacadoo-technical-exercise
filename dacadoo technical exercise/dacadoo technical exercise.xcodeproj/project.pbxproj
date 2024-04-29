@@ -17,6 +17,9 @@
 		0C9E79AB2BDF9FFC00762566 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79AA2BDF9FFC00762566 /* APIService.swift */; };
 		0C9E79AD2BDFA22F00762566 /* UnsplashResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79AC2BDFA22F00762566 /* UnsplashResponse.swift */; };
 		0C9E79AF2BDFA23700762566 /* UnsplashPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79AE2BDFA23700762566 /* UnsplashPhoto.swift */; };
+		0C9E79B22BDFCDD900762566 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79B12BDFCDD900762566 /* ImageCell.swift */; };
+		0C9E79B52BDFCE0400762566 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9E79B42BDFCE0400762566 /* ImageCell.xib */; };
+		0C9E79B82BDFCF5600762566 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79B72BDFCF5600762566 /* UITableViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		0C9E79AA2BDF9FFC00762566 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0C9E79AC2BDFA22F00762566 /* UnsplashResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashResponse.swift; sourceTree = "<group>"; };
 		0C9E79AE2BDFA23700762566 /* UnsplashPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhoto.swift; sourceTree = "<group>"; };
+		0C9E79B12BDFCDD900762566 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		0C9E79B42BDFCE0400762566 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		0C9E79B72BDFCF5600762566 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,8 @@
 		0C9E798E2BDF975800762566 /* dacadoo technical exercise */ = {
 			isa = PBXGroup;
 			children = (
+				0C9E79B62BDFCF4800762566 /* Extensions */,
+				0C9E79B02BDFCDCA00762566 /* Cells */,
 				0C9E79A92BDF9FF000762566 /* Services */,
 				0C9E79A62BDF989600762566 /* Models */,
 				0C9E79A32BDF985800762566 /* ViewControllers */,
@@ -117,6 +125,31 @@
 				0C9E79AA2BDF9FFC00762566 /* APIService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		0C9E79B02BDFCDCA00762566 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0C9E79B32BDFCDF600762566 /* ImageCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0C9E79B32BDFCDF600762566 /* ImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C9E79B12BDFCDD900762566 /* ImageCell.swift */,
+				0C9E79B42BDFCE0400762566 /* ImageCell.xib */,
+			);
+			path = ImageCell;
+			sourceTree = "<group>";
+		};
+		0C9E79B62BDFCF4800762566 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C9E79B72BDFCF5600762566 /* UITableViewCell+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C9E799C2BDF975D00762566 /* LaunchScreen.storyboard in Resources */,
+				0C9E79B52BDFCE0400762566 /* ImageCell.xib in Resources */,
 				0C9E79992BDF975D00762566 /* Assets.xcassets in Resources */,
 				0C9E79972BDF975800762566 /* Main.storyboard in Resources */,
 			);
@@ -194,7 +228,9 @@
 				0C9E79AB2BDF9FFC00762566 /* APIService.swift in Sources */,
 				0C9E79942BDF975800762566 /* SearchViewController.swift in Sources */,
 				0C9E79902BDF975800762566 /* AppDelegate.swift in Sources */,
+				0C9E79B82BDFCF5600762566 /* UITableViewCell+Extension.swift in Sources */,
 				0C9E79AD2BDFA22F00762566 /* UnsplashResponse.swift in Sources */,
+				0C9E79B22BDFCDD900762566 /* ImageCell.swift in Sources */,
 				0C9E79922BDF975800762566 /* SceneDelegate.swift in Sources */,
 				0C9E79AF2BDFA23700762566 /* UnsplashPhoto.swift in Sources */,
 			);
