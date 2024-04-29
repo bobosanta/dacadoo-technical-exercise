@@ -32,7 +32,18 @@ class SearchViewController: UIViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
     }
+    
+    private func fetchImages(for query: String) {
+        Task {
+            do {
+                let images = try await viewModel.fetchImages(query: query)
 
+                print(images)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 // MARK: - UISearchBarDelegate Extension
@@ -42,7 +53,7 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
-        viewModel.fetchImages(query: text)
+        fetchImages(for: text)
     }
 }
 

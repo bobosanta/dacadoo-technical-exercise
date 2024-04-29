@@ -5,7 +5,7 @@
 //  Created by Santamarian Bogdan on 29.04.2024.
 //
 
-import Foundation
+import UIKit
 
 class SearchViewControllerViewModel {
     
@@ -15,8 +15,8 @@ class SearchViewControllerViewModel {
         self.apiService = apiService
     }
     
-    func fetchImages(query: String) {
-        apiService?.fetchImages(for: query)
+    func fetchImages(query: String) async throws -> [UIImage] {
+        return try await apiService?.fetchImages(for: query) ?? []
     }
     
 }
