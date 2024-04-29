@@ -12,10 +12,12 @@ private enum SearchViewControllerConstants {
 }
 
 class SearchViewController: UIViewController {
-
+    
     let searchController = UISearchController()
     
+    private let viewModel = SearchViewControllerViewModel(apiService: APIService())
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,7 @@ class SearchViewController: UIViewController {
     }
 
     
+    // MARK: - Private methods
     private func setupUI() {
         title = SearchViewControllerConstants.searchTitle
         
@@ -39,8 +42,7 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
-        print(text)
+        viewModel.fetchImages(query: text)
     }
-    
 }
 
