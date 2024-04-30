@@ -9,14 +9,25 @@ import UIKit
 
 class SearchViewControllerViewModel {
     
-    private let apiService: APIService?
+    private let apiService: APIServiceImpl?
     
-    init(apiService: APIService?) {
+    init(apiService: APIServiceImpl?) {
         self.apiService = apiService
     }
     
     func fetchImages(query: String) async throws -> [UIImage] {
-        return try await apiService?.fetchImages(for: query) ?? []
+        do {
+            let result = await apiService?.fetchImages(for: query) ?? .failure(APIServiceError.unknownError)
+            
+            switch result {
+            case .success(let images):
+                return images
+            case .failure(let error):
+                throw error
+            }
+        } catch {
+            throw error
+        }
     }
     
     func resizeImage(image: UIImage, targetWidth: CGFloat) -> UIImage? {
