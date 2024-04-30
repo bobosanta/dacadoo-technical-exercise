@@ -50,7 +50,15 @@ class SearchViewController: UIViewController {
         Task {
             do {
                 let images = try await viewModel.fetchImages(query: query)
-                self.images = images
+                var resizedImages: [UIImage] = []
+                
+                for image in images {
+                    if let resizedImage = viewModel.resizeImage(image: image, targetWidth: 300) {
+                        resizedImages.append(resizedImage)
+                    }
+                }
+                
+                self.images = resizedImages
                 
                 tableView.reloadData()
             } catch {
