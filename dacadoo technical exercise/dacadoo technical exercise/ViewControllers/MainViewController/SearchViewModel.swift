@@ -39,15 +39,10 @@ class SearchViewModel {
     
     // MARK: - Private methods
     private func resizeImages(images: [ImageWithDescription]) -> [UIImage] {
-        var resizedImages: [UIImage] = []
-        
-        for imageWithDescription in images {
-            if let resizedImage = resizeImage(image: imageWithDescription.fullSizeImage, targetWidth: SearchViewModelConstants.targetWidth) {
-                resizedImages.append(resizedImage)
-            }
+        return images.compactMap { imageWithDescription in
+            let resizedImage = resizeImage(image: imageWithDescription.fullSizeImage, targetWidth: SearchViewModelConstants.targetWidth)
+            return resizedImage
         }
-        
-        return resizedImages
     }
     
     private func resizeImage(image: UIImage, targetWidth: CGFloat) -> UIImage? {
