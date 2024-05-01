@@ -24,11 +24,11 @@ class SearchViewModel {
     }
     
     func fetchImages(query: String) async throws {
-        let result = await apiService.fetchImages(for: query)
+        let result = await apiService.fetchImagesWithDescription(for: query)
         
         switch result {
         case .success(let images):
-            self.imagesWithDescription = images
+            imagesWithDescription = images
             self.images.send(resizeImages(images: images))
         case .failure(let error):
             throw error

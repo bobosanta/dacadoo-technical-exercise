@@ -24,6 +24,7 @@
 		0C9E79BC2BDFD76300762566 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */; };
 		0C9E79BE2BE1042900762566 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79BD2BE1042900762566 /* APIService.swift */; };
 		0C9E79C02BE223B600762566 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79BF2BE223B600762566 /* DetailsViewModel.swift */; };
+		0C9E79C42BE2524800762566 /* ImageWithDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79C32BE2524800762566 /* ImageWithDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		0C9E79BD2BE1042900762566 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0C9E79BF2BE223B600762566 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		0C9E79C32BE2524800762566 /* ImageWithDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				0C9E79AC2BDFA22F00762566 /* UnsplashResponse.swift */,
 				0C9E79AE2BDFA23700762566 /* UnsplashPhoto.swift */,
+				0C9E79C32BE2524800762566 /* ImageWithDescription.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				0C9E79AB2BDF9FFC00762566 /* APIServiceImpl.swift in Sources */,
 				0C9E79942BDF975800762566 /* SearchViewController.swift in Sources */,
 				0C9E79902BDF975800762566 /* AppDelegate.swift in Sources */,
+				0C9E79C42BE2524800762566 /* ImageWithDescription.swift in Sources */,
 				0C9E79BE2BE1042900762566 /* APIService.swift in Sources */,
 				0C9E79B82BDFCF5600762566 /* UITableViewCell+Extension.swift in Sources */,
 				0C9E79AD2BDFA22F00762566 /* UnsplashResponse.swift in Sources */,

@@ -7,11 +7,6 @@
 
 import UIKit
 
-struct ImageWithDescription {
-    let imageDescription: String
-    let image: UIImage
-}
-
 private enum APIServiceConstants {
     static let clientID = "NHr5nmnvy4fJA0AtfpReQm_EI2SBnnvPajDObRtmYbY"
     static let baseURL = "https://api.unsplash.com/search/photos"
@@ -26,7 +21,7 @@ enum APIServiceError: Error {
 
 final class APIServiceImpl: APIService {
 
-    func fetchImages(for query: String) async -> Result<[ImageWithDescription], Error> {
+    func fetchImagesWithDescription(for query: String) async -> Result<[ImageWithDescription], Error> {
         do {
             let urlString = "\(APIServiceConstants.baseURL)?query=\(query)&client_id=\(APIServiceConstants.clientID)"
             
@@ -39,7 +34,7 @@ final class APIServiceImpl: APIService {
             
             let (data, _) = try await URLSession.shared.data(for: request)
             let result = try JSONDecoder().decode(UnsplashResponse.self, from: data)
-            let images = try await downloadImages(from: result.results)
+            let images = try await parseImagesWithDescription(from: result.results)
             
             return .success(images)
         } catch {
@@ -47,7 +42,7 @@ final class APIServiceImpl: APIService {
         }
     }
     
-    private func downloadImages(from results: [UnsplashPhoto]) async throws -> [ImageWithDescription] {
+    private func parseImagesWithDescription(from results: [UnsplashPhoto]) async throws -> [ImageWithDescription] {
         var images: [ImageWithDescription] = []
         
         for photo in results {
