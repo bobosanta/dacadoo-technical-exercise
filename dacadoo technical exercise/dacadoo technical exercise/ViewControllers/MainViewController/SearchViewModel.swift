@@ -1,5 +1,5 @@
 //
-//  SearchViewControllerViewModel.swift
+//  SearchViewModel.swift
 //  dacadoo technical exercise
 //
 //  Created by Santamarian Bogdan on 29.04.2024.
@@ -7,25 +7,21 @@
 
 import UIKit
 
-class SearchViewControllerViewModel {
+class SearchViewModel {
     
-    private let apiService: APIServiceImpl?
+    private let apiService: APIService
     
-    init(apiService: APIServiceImpl?) {
+    init(apiService: APIService) {
         self.apiService = apiService
     }
     
     func fetchImages(query: String) async throws -> [UIImage] {
-        do {
-            let result = await apiService?.fetchImages(for: query) ?? .failure(APIServiceError.unknownError)
-            
-            switch result {
-            case .success(let images):
-                return images
-            case .failure(let error):
-                throw error
-            }
-        } catch {
+        let result = await apiService.fetchImages(for: query)
+        
+        switch result {
+        case .success(let images):
+            return images
+        case .failure(let error):
             throw error
         }
     }

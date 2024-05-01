@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     
     let searchController = UISearchController()
     
-    private let viewModel = SearchViewControllerViewModel(apiService: APIServiceImpl())
+    private let viewModel = SearchViewModel(apiService: APIServiceImpl())
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,7 +28,6 @@ class SearchViewController: UIViewController {
         setupUI()
     }
 
-    
     // MARK: - Private methods
     private func setupUI() {
         title = SearchViewControllerConstants.searchTitle

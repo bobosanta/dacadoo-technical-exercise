@@ -42,7 +42,7 @@ final class APIServiceImpl: APIService {
         }
     }
     
-    func downloadImages(from results: [UnsplashPhoto]) async throws -> [UIImage] {
+    private func downloadImages(from results: [UnsplashPhoto]) async throws -> [UIImage] {
         var images: [UIImage] = []
         
         for photo in results {

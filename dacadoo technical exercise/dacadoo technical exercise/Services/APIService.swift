@@ -9,5 +9,4 @@ import UIKit
 
 protocol APIService {
     func fetchImages(for query: String) async -> Result<[UIImage], Error>
-    func downloadImages(from results: [UnsplashPhoto]) async throws -> [UIImage]
 }
