@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct ImageWithDescription {
+    let imageDescription: String
+    let image: UIImage
+}
+
 private enum APIServiceConstants {
     static let clientID = "NHr5nmnvy4fJA0AtfpReQm_EI2SBnnvPajDObRtmYbY"
     static let baseURL = "https://api.unsplash.com/search/photos"
@@ -21,7 +26,7 @@ enum APIServiceError: Error {
 
 final class APIServiceImpl: APIService {
 
-    func fetchImages(for query: String) async -> Result<[UIImage], Error> {
+    func fetchImages(for query: String) async -> Result<[ImageWithDescription], Error> {
         do {
             let urlString = "\(APIServiceConstants.baseURL)?query=\(query)&client_id=\(APIServiceConstants.clientID)"
             
@@ -42,8 +47,8 @@ final class APIServiceImpl: APIService {
         }
     }
     
-    private func downloadImages(from results: [UnsplashPhoto]) async throws -> [UIImage] {
-        var images: [UIImage] = []
+    private func downloadImages(from results: [UnsplashPhoto]) async throws -> [ImageWithDescription] {
+        var images: [ImageWithDescription] = []
         
         for photo in results {
             guard let url = URL(string: photo.urls.regular) else {
@@ -52,9 +57,10 @@ final class APIServiceImpl: APIService {
             }
             
             do {
-                let imageData = try await URLSession.shared.data(from: url).0
-                if let image = UIImage(data: imageData) {
-                    images.append(image)
+                let (data, _) = try await URLSession.shared.data(from: url)
+                if let image = UIImage(data: data) {
+                    let imageWithDescription = ImageWithDescription(imageDescription: photo.description ?? "", image: image)
+                    images.append(imageWithDescription)
                 }
             } catch {
                 throw APIServiceError.networkError(error)

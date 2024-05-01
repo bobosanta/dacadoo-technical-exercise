@@ -81,7 +81,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(image: viewModel.images.value[indexPath.row])
+        cell.configure(image: viewModel.images.value[indexPath.row], accesibilityLabel: viewModel.imagesWithDescription[indexPath.row].imageDescription)
         
         return cell
     }

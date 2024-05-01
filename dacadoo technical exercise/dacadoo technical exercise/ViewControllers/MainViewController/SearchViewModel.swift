@@ -17,6 +17,7 @@ class SearchViewModel {
     private let apiService: APIService
     
     var images = CurrentValueSubject<[UIImage], Never>([])
+    var imagesWithDescription: [ImageWithDescription] = []
     
     init(apiService: APIService) {
         self.apiService = apiService
@@ -27,6 +28,7 @@ class SearchViewModel {
         
         switch result {
         case .success(let images):
+            self.imagesWithDescription = images
             self.images.send(resizeImages(images: images))
         case .failure(let error):
             throw error
@@ -34,11 +36,11 @@ class SearchViewModel {
     }
     
     // MARK: - Private methods
-    private func resizeImages(images: [UIImage]) -> [UIImage] {
+    private func resizeImages(images: [ImageWithDescription]) -> [UIImage] {
         var resizedImages: [UIImage] = []
         
-        for image in images {
-            if let resizedImage = resizeImage(image: image, targetWidth: SearchViewModelConstants.targetWidth) {
+        for imageWithDescription in images {
+            if let resizedImage = resizeImage(image: imageWithDescription.image, targetWidth: SearchViewModelConstants.targetWidth) {
                 resizedImages.append(resizedImage)
             }
         }

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol APIService {
-    func fetchImages(for query: String) async -> Result<[UIImage], Error>
+    func fetchImages(for query: String) async -> Result<[ImageWithDescription], Error>
 }
