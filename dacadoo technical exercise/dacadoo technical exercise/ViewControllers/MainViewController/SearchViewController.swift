@@ -31,7 +31,7 @@ class SearchViewController: UIViewController {
 
     // MARK: - Private methods
     private func setupBindings() {
-        viewModel.images
+        viewModel.imagesWithDescription
             .sink { [weak self] _ in
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -73,7 +73,7 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - UITableViewDelegate and Datasource Extension
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.images.value.count
+        return viewModel.imagesWithDescription.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,13 +81,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(image: viewModel.images.value[indexPath.row], accesibilityLabel: viewModel.imagesWithDescription[indexPath.row].imageDescription)
+        cell.configure(image: viewModel.imagesWithDescription.value[indexPath.row].resizedImage, accesibilityLabel: viewModel.imagesWithDescription.value[indexPath.row].imageDescription)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(image: viewModel.images.value[indexPath.row]))
+        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(image: viewModel.imagesWithDescription.value[indexPath.row].fullSizeImage))
         
         navigationController?.pushViewController(detailsViewController, animated: true)
     }

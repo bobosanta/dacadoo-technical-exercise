@@ -9,5 +9,6 @@ import UIKit
 
 struct ImageWithDescription {
     let imageDescription: String
-    let image: UIImage
+    let fullSizeImage: UIImage
+    let resizedImage: UIImage
 }

@@ -54,7 +54,7 @@ final class APIServiceImpl: APIService {
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 if let image = UIImage(data: data) {
-                    let imageWithDescription = ImageWithDescription(imageDescription: photo.description ?? "", image: image)
+                    let imageWithDescription = ImageWithDescription(imageDescription: photo.description ?? "", fullSizeImage: image, resizedImage: image)
                     images.append(imageWithDescription)
                 }
             } catch {
