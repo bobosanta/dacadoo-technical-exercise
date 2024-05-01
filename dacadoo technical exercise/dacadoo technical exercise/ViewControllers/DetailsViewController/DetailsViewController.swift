@@ -10,12 +10,22 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     @IBOutlet weak var fullSizeImageView: UIImageView!
-    var image: UIImage?
+    
+    var viewModel: DetailsViewModel
+    
+    init(viewModel: DetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fullSizeImageView.image = image
+        fullSizeImageView.image = viewModel.image
     }
     
 }

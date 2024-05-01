@@ -23,6 +23,7 @@
 		0C9E79BA2BDFD68300762566 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79B92BDFD68300762566 /* DetailsViewController.swift */; };
 		0C9E79BC2BDFD76300762566 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */; };
 		0C9E79BE2BE1042900762566 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79BD2BE1042900762566 /* APIService.swift */; };
+		0C9E79C02BE223B600762566 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E79BF2BE223B600762566 /* DetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		0C9E79B92BDFD68300762566 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		0C9E79BD2BE1042900762566 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		0C9E79BF2BE223B600762566 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				0C9E79B92BDFD68300762566 /* DetailsViewController.swift */,
+				0C9E79BF2BE223B600762566 /* DetailsViewModel.swift */,
 				0C9E79BB2BDFD76300762566 /* DetailsViewController.xib */,
 			);
 			path = DetailsViewController;
@@ -245,6 +248,7 @@
 				0C9E79922BDF975800762566 /* SceneDelegate.swift in Sources */,
 				0C9E79AF2BDFA23700762566 /* UnsplashPhoto.swift in Sources */,
 				0C9E79BA2BDFD68300762566 /* DetailsViewController.swift in Sources */,
+				0C9E79C02BE223B600762566 /* DetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

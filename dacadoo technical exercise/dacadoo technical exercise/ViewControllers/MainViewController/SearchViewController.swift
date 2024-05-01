@@ -88,9 +88,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsViewController = DetailsViewController()
+        let detailsViewController = DetailsViewController(viewModel: DetailsViewModel(image: viewModel.images.value[indexPath.row]))
         
-        detailsViewController.image = viewModel.images.value[indexPath.row]
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
