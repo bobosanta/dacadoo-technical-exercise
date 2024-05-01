@@ -55,7 +55,6 @@ class SearchViewController: UIViewController {
     private func registerCell() {
         ImageCell.registerByClassName(tableView: tableView)
     }
-
 }
 
 // MARK: - UISearchBarDelegate Extension

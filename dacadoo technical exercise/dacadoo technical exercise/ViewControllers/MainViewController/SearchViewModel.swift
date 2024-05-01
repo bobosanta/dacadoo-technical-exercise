@@ -57,5 +57,4 @@ class SearchViewModel {
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
-    
 }

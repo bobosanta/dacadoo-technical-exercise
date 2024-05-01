@@ -8,6 +8,7 @@
 import UIKit
 
 class DetailsViewModel {
+    
     var image: UIImage
     
     init(image: UIImage) {

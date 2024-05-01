@@ -13,6 +13,7 @@ class DetailsViewController: UIViewController {
     
     var viewModel: DetailsViewModel
     
+    // MARK: - Initialization
     init(viewModel: DetailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -22,10 +23,10 @@ class DetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fullSizeImageView.image = viewModel.image
     }
-    
 }
