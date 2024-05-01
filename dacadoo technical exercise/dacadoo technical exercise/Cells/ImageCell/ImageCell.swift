@@ -11,9 +11,9 @@ class ImageCell: UITableViewCell {
     
     @IBOutlet weak var cellImageView: UIImageView!
     
-    func configure(imageWithDescription: ImageWithDescription) {
+    func configure(image: UIImage, accesibilityLabel: String) {
         cellImageView.isAccessibilityElement = true
-        cellImageView.image = imageWithDescription.image
-        cellImageView.accessibilityLabel = imageWithDescription.imageDescription
+        cellImageView.image = image
+        cellImageView.accessibilityLabel = accesibilityLabel
     }
 }
