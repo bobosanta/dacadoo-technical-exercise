@@ -5,6 +5,7 @@
 //  Created by Santamarian Bogdan on 29.04.2024.
 //
 
+import Combine
 import UIKit
 
 private enum SearchViewControllerConstants {
@@ -15,20 +16,30 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var images: [UIImage] = []
-    
     let searchController = UISearchController()
     
     private let viewModel = SearchViewModel(apiService: APIServiceImpl())
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupBindings()
         setupUI()
     }
 
     // MARK: - Private methods
+    private func setupBindings() {
+        viewModel.images
+            .sink { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     private func setupUI() {
         title = SearchViewControllerConstants.searchTitle
         
@@ -44,27 +55,7 @@ class SearchViewController: UIViewController {
     private func registerCell() {
         ImageCell.registerByClassName(tableView: tableView)
     }
-    
-    private func fetchImages(for query: String) {
-        Task {
-            do {
-                let images = try await viewModel.fetchImages(query: query)
-                var resizedImages: [UIImage] = []
-                
-                for image in images {
-                    if let resizedImage = viewModel.resizeImage(image: image, targetWidth: 300) {
-                        resizedImages.append(resizedImage)
-                    }
-                }
-                
-                self.images = resizedImages
-                
-                tableView.reloadData()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
+
 }
 
 // MARK: - UISearchBarDelegate Extension
@@ -74,14 +65,16 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
-        fetchImages(for: text)
+        Task {
+            try await viewModel.fetchImages(query: text)
+        }
     }
 }
 
 // MARK: - UITableViewDelegate and Datasource Extension
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+        return viewModel.images.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,7 +82,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(image: images[indexPath.row])
+        cell.configure(image: viewModel.images.value[indexPath.row])
         
         return cell
     }
@@ -97,7 +90,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = DetailsViewController()
         
-        detailsViewController.image = images[indexPath.row]
+        detailsViewController.image = viewModel.images.value[indexPath.row]
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

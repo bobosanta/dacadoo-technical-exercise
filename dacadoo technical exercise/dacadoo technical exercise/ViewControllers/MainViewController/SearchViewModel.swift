@@ -5,28 +5,48 @@
 //  Created by Santamarian Bogdan on 29.04.2024.
 //
 
+import Combine
 import UIKit
+
+private enum SearchViewModelConstants {
+    static let targetWidth = CGFloat(300)
+}
 
 class SearchViewModel {
     
     private let apiService: APIService
     
+    var images = CurrentValueSubject<[UIImage], Never>([])
+    
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
-    func fetchImages(query: String) async throws -> [UIImage] {
+    func fetchImages(query: String) async throws {
         let result = await apiService.fetchImages(for: query)
         
         switch result {
         case .success(let images):
-            return images
+            self.images.send(resizeImages(images: images))
         case .failure(let error):
             throw error
         }
     }
     
-    func resizeImage(image: UIImage, targetWidth: CGFloat) -> UIImage? {
+    // MARK: - Private methods
+    private func resizeImages(images: [UIImage]) -> [UIImage] {
+        var resizedImages: [UIImage] = []
+        
+        for image in images {
+            if let resizedImage = resizeImage(image: image, targetWidth: SearchViewModelConstants.targetWidth) {
+                resizedImages.append(resizedImage)
+            }
+        }
+        
+        return resizedImages
+    }
+    
+    private func resizeImage(image: UIImage, targetWidth: CGFloat) -> UIImage? {
         let scale = targetWidth / image.size.width
         let newHeight = image.size.height * scale
         
